@@ -1,32 +1,28 @@
 "use server"
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    fullName: {
+const farmerSchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: [true, "Please enter your Name"],
-    },
-    email: {
-        type: String,
-        required: [true, "Please enter your email"],
+        required: [true, "Please enter your name"],
         unique: true,
     },
-    phoneNumber: {
+    temperature: {
+        type: String,
+    },
+    humidity: {
+        type: String,
+    },
+    moisture: {
         type: String,
         unique: true,
     },
-    userID: {
-        type: String,
-        required: [true, "Please enter your userID"],
-        unique: true,
-    },
-    profileImage: {
-        type: String,
-        // required: [true, "Please enter your profile image"],
+    yield: {
+        type: JSON,
     },
 
 }, { timestamps: true })
 
-const User = mongoose.models.users || mongoose.model('users', userSchema);
+const Farmer = mongoose.models.farmers || mongoose.model('farmer', farmerSchema);
 
-export default User;
+export default Farmer;

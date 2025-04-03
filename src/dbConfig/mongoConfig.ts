@@ -47,7 +47,8 @@ const dbConnect = async () => {
         console.error('Error connecting to MongoDB:', error);
     }
     
-    console.log("mongodb connection: ",Boolean(connection.connection.readyState));
+    // console.log("mongodb connection: ",Boolean(connection.connection.readyState));
+    console.log("mongodb connection: ",Boolean(connection));
     return connection;
 };
 

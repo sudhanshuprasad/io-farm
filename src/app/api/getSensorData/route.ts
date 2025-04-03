@@ -38,16 +38,15 @@ dbConnect();
 //     return Response.json({ message: "set details" }, { status: 200 })
 // }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
+    console.log(searchParams);
     // For example, fetch data from your DB here
-    const users = [
-        { id: 1, name: 'Alice' },
-        { id: 2, name: 'Bob' }
-    ];
-    return new Response(JSON.stringify(users), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-    });
+
+    const farmer = await Farmer.find({});
+    console.log('farmer: ', farmer);
+
+    return Response.json(searchParams, { status: 200 });
 }
 
 export async function POST(request: Request) {
