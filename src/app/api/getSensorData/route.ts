@@ -40,13 +40,24 @@ dbConnect();
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
-    console.log(searchParams);
+
+    const params: Record<string, string[]> = {};
+    searchParams.forEach((value, key) => {
+        if (!params[key]) {
+            params[key] = searchParams.getAll(key); // Use getAll to get all values for the key
+        }
+    });
+
+    console.log("Query Parameters:", params);
+
+    // const data = searchParams.getAll('');  
+    console.log(params);
     // For example, fetch data from your DB here
 
     const farmer = await Farmer.find({});
-    console.log('farmer: ', farmer);
+    // console.log('farmer: ', farmer);
 
-    return Response.json(searchParams, { status: 200 });
+    return Response.json({ message: "set details", params }, { status: 200 });
 }
 
 export async function POST(request: Request) {
