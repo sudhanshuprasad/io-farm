@@ -1,11 +1,11 @@
 import Image from "next/image";
-import FarmerPage from "./components/FarmerPage";
+import FarmerPage from "../components/FarmerSection";
+import FarmerGrid from "../components/FarmerGrid";
 
 export default function Home() {
   return (
-    // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-    <div>
-      <FarmerPage />
+    <div className="m-5">
+      <FarmerGrid/>
     </div>
   );
 }
