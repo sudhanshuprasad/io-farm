@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
     const params: Record<string, string[]> = {};
     searchParams.forEach((value, key) => {
         if (!params[key]) {
-            params[key] = searchParams.getAll(key); // Use getAll to get all values for the key
+            params[key] = searchParams.getAll(key);
         }
     });
 
@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
     return Response.json({ message: "set details", params }, { status: 200 });
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
     // Parse the request body
     const body = await request.json();
     const { name } = body;
