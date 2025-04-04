@@ -77,5 +77,5 @@ export async function GET(request: NextRequest) {
     // e.g. Insert new user into your DB
     const farmer = await Farmer.findOne({ name: searchParams.get('name') });
 
-    return new Response(farmer, { status: 201, });
+    return Response.json(farmer, { status: 201, });
 }

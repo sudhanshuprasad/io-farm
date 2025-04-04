@@ -1,14 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, CardContent, Button, Typography, Input, TextField } from '@mui/material';
 import Graph from './Graph';
 export default function FarmerSection() {
-  
+
+  const [farmerData, setFarmerData] = useState({
+    temperature: '321',
+    humidity: '50',
+    moisture: '80',
+    // yield: { potato: '12', onion: '54', tomato: '24' }
+  });
+
   // Fetch data from the server when the component mounts
   const fetchData = async () => {
     try {
-      const response = await axios.get('/api/getFarmerData');
-      console.log(response.data); // Handle the fetched data as needed
+      const response: any = await axios.get('/api/setFarmerData?name=farmer3');
+      console.log(response?.data);
+      setFarmerData({
+        temperature: response?.data?.temperature,
+        humidity: response?.data?.humidity,
+        moisture: response?.data?.moisture
+      });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -16,7 +28,7 @@ export default function FarmerSection() {
   useEffect(() => {
     fetchData();
   }
-  , []); // Empty dependency array to run only once on mount
+    , []); // Empty dependency array to run only once on mount
 
   const handleSubmit = () => {
     // Handle form submission logic here
@@ -38,11 +50,11 @@ export default function FarmerSection() {
             <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Farmer 1</Typography>
           </div>
 
-          <Typography>Agriculture land: </Typography>
+          <Typography>Agriculture land:</Typography>
           <ul className="list-disc list-inside mb-2">
-            <li>Temperature</li>
-            <li>Humidity</li>
-            <li>Moisture</li>
+            <li>Temperature: {farmerData?.temperature}</li>
+            <li>Humidity: {farmerData?.humidity}</li>
+            <li>Moisture: {farmerData?.moisture}</li>
           </ul>
           {/* <Typography>Temperature</Typography>
           <Typography>Humidity</Typography>
