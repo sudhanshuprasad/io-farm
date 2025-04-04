@@ -52,10 +52,22 @@ export async function GET(request: NextRequest) {
 
     // const data = searchParams.getAll('');  
     console.log(params);
+    const data = {
+        name: params?.name[0],
+        temperature: params?.temp[0],
+        humidity: params?.humidity[0],
+        moisture: params?.moisture[0],
+        // yield: {
+        //     potato: params?.potato,
+        //     onion: params?.onion,
+        //     tomato: params?.tomato
+        // }
+    }
     // For example, fetch data from your DB here
 
-    const farmer = await Farmer.find({});
+    // const farmer = await Farmer.find({});
     // console.log('farmer: ', farmer);
+    const farmer = await Farmer.findOneAndUpdate({ name: data?.name }, { $set: data }, { new: true });
 
     return Response.json({ message: "set details", params }, { status: 200 });
 }

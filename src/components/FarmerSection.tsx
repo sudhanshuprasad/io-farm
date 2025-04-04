@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Card, CardContent, Button, Typography, Input, TextField } from '@mui/material';
 import Graph from './Graph';
 export default function FarmerSection() {
+  
+  // Fetch data from the server when the component mounts
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/getFarmerData');
+      console.log(response.data); // Handle the fetched data as needed
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }
+  , []); // Empty dependency array to run only once on mount
 
   const handleSubmit = () => {
     // Handle form submission logic here

@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     console.log("Request body: ", body);
     // find user in the database
-    const farmerFound = await Farmer.findOne({name: body?.name});
+    const farmerFound = await Farmer.findOne({ name: body?.name });
     // console.log(farmerFound);
     //if user is not found then save the user
     const data = {
@@ -69,16 +69,13 @@ export async function POST(req: NextRequest) {
     return Response.json({ message: "set details" }, { status: 200 })
 }
 
-// export async function POST(request: NextRequest) {
-//     // Parse the request body
-//     const body = await request.json();
-//     const { name } = body;
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
 
-//     // e.g. Insert new user into your DB
-//     const newUser = { id: Date.now(), name };
+    console.log(searchParams.get('name'));
 
-//     return new Response(JSON.stringify(newUser), {
-//         status: 201,
-//         headers: { 'Content-Type': 'application/json' }
-//     });
-// }
+    // e.g. Insert new user into your DB
+    const farmer = await Farmer.findOne({ name: searchParams.get('name') });
+
+    return new Response(farmer, { status: 201, });
+}

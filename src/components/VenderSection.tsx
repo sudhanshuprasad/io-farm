@@ -39,7 +39,7 @@ export default function FarmerSection() {
             </li>
           </ul>
 
-          <Button variant="contained" style={{marginTop: '10px'}} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Buy</Button>
+          <Button variant="contained" style={{marginTop: '10px'}} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Inquire</Button>
         </CardContent>
       </Card>
 
