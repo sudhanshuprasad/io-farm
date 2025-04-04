@@ -23,13 +23,13 @@ export default function FarmerGrid() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <FarmerSection name="farmer1" />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <FarmerSection name="farmer2" />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <FarmerSection name="farmer3" />
                 </Grid>
             </Grid>
         </Box>

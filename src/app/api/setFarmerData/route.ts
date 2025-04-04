@@ -39,9 +39,9 @@ export async function POST(req: NextRequest) {
     //if user is not found then save the user
     const data = {
         name: body?.name,
-        temperature: '31',
-        humidity: '50',
-        moisture: '80',
+        temperature: '',
+        humidity: '',
+        moisture: '',
         yield: {
             potato: body?.potato,
             onion: body?.onion,

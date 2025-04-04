@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, CardContent, Button, Typography, Input, TextField } from '@mui/material';
 import Graph from './Graph';
-export default function FarmerSection() {
+export default function FarmerSection({name}: { name?: string }) {
 
   const [farmerData, setFarmerData] = useState({
-    temperature: '321',
-    humidity: '50',
-    moisture: '80',
+    temperature: 'loading...',
+    humidity: 'loading...',
+    moisture: 'loading...',
     // yield: { potato: '12', onion: '54', tomato: '24' }
   });
 
   // Fetch data from the server when the component mounts
   const fetchData = async () => {
     try {
-      const response: any = await axios.get('/api/setFarmerData?name=farmer3');
+      const response: any = await axios.get(`/api/setFarmerData?name=${name}`);
       console.log(response?.data);
       setFarmerData({
         temperature: response?.data?.temperature,
@@ -47,7 +47,7 @@ export default function FarmerSection() {
       <Card className="bg-blue-500 text-white p-4">
         <CardContent className="flex flex-col space-y-2">
           <div className="full-width flex items-center justify-between mb-4">
-            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Farmer 1</Typography>
+            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">{name}</Typography>
           </div>
 
           <Typography>Agriculture land:</Typography>
