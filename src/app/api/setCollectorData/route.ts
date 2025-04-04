@@ -1,7 +1,7 @@
 "use server"
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/dbConfig/mongoConfig";
-import Farmer from "@/schema/farmerSchema";
+import Collector from "@/schema/collectorSchema";
 
 dbConnect();
 
@@ -14,8 +14,8 @@ dbConnect();
 //     if (!userFound) {
 
 //         try {
-//             const savedFarmer = await User.create('user');
-//             await savedFarmer.save();
+//             const savedCollector = await User.create('user');
+//             await savedCollector.save();
 //         } catch (error) {
 //             console.log(error);
 //             return Response.json({ message: "error occured while saving the user" }, { status: 500 })
@@ -34,26 +34,21 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     console.log("Request body: ", body);
     // find user in the database
-    const farmerFound = await Farmer.findOne({name: body?.name});
+    const farmerFound = await Collector.findOne({ name: body?.name });
     // console.log(farmerFound);
     //if user is not found then save the user
     const data = {
         name: body?.name,
-        temperature: '31',
-        humidity: '50',
-        moisture: '80',
-        yield: {
-            potato: body?.potato,
-            onion: body?.onion,
-            tomato: body?.tomato
-        }
+        potato: body?.potato,
+        onion: body?.onion,
+        tomato: body?.tomato
     }
 
     if (!farmerFound) {
 
         try {
-            const savedFarmer = await Farmer.create(data);
-            await savedFarmer.save();
+            const savedCollector = await Collector.create(data);
+            await savedCollector.save();
         } catch (error) {
             console.log(error);
             return Response.json({ message: "error occured while saving" }, { status: 500 })
@@ -61,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     }
 
-    const farmer = await Farmer.findByIdAndUpdate(farmerFound?._id, data, { new: true });
+    const farmer = await Collector.findByIdAndUpdate(farmerFound?._id, data, { new: true });
     // console.log('farmer: ', farmer);
 
     // saving the job details

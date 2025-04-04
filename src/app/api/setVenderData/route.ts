@@ -1,7 +1,7 @@
 "use server"
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/dbConfig/mongoConfig";
-import Farmer from "@/schema/farmerSchema";
+import Vender from "@/schema/venderSchema";
 
 dbConnect();
 
@@ -14,8 +14,8 @@ dbConnect();
 //     if (!userFound) {
 
 //         try {
-//             const savedFarmer = await User.create('user');
-//             await savedFarmer.save();
+//             const savedVender = await User.create('user');
+//             await savedVender.save();
 //         } catch (error) {
 //             console.log(error);
 //             return Response.json({ message: "error occured while saving the user" }, { status: 500 })
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     console.log("Request body: ", body);
     // find user in the database
-    const farmerFound = await Farmer.findOne({name: body?.name});
+    const farmerFound = await Vender.findOne({name: body?.name});
     // console.log(farmerFound);
     //if user is not found then save the user
     const data = {
@@ -52,8 +52,8 @@ export async function POST(req: NextRequest) {
     if (!farmerFound) {
 
         try {
-            const savedFarmer = await Farmer.create(data);
-            await savedFarmer.save();
+            const savedVender = await Vender.create(data);
+            await savedVender.save();
         } catch (error) {
             console.log(error);
             return Response.json({ message: "error occured while saving" }, { status: 500 })
@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
 
     }
 
-    const farmer = await Farmer.findByIdAndUpdate(farmerFound?._id, data, { new: true });
+    const farmer = await Vender.findByIdAndUpdate(farmerFound?._id, data, { new: true });
     // console.log('farmer: ', farmer);
 
     // saving the job details

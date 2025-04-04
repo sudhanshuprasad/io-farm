@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FarmerSection from './FarmerSection';
+import VenderSection from './VenderSection';
+import CollectorCard from './CollectorCard';
 
 const Item = styled(Paper)(({ theme }: { theme: any }) => ({
     backgroundColor: '#fff',
@@ -18,18 +20,18 @@ const Item = styled(Paper)(({ theme }: { theme: any }) => ({
     }),
 }));
 
-export default function FarmerGrid() {
+export default function CollectorGrid() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <CollectorCard />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <CollectorCard />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <FarmerSection />
+                    <CollectorCard />
                 </Grid>
             </Grid>
         </Box>

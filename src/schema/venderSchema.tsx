@@ -1,10 +1,10 @@
 "use server"
 import mongoose from "mongoose";
 
-const farmerSchema = new mongoose.Schema({
+const venderSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Please enter farmer name"],
+        required: [true, "Please enter vender name"],
         unique: true,
     },
     temperature: {
@@ -22,6 +22,6 @@ const farmerSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const Farmer = mongoose.models.farmers || mongoose.model('farmer', farmerSchema);
+const Vendor = mongoose.models.venders || mongoose.model('vender', venderSchema);
 
-export default Farmer;
+export default Vendor;

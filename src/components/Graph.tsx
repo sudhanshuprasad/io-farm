@@ -12,8 +12,8 @@ export default function Graph() {
                     label: 'Garden Pump',
                 },
             ]}
-            width={500}
-            height={300}
+            width={200}
+            height={200}
         />
     );
 }
