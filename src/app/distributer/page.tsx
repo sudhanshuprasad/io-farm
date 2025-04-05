@@ -1,7 +1,7 @@
 "use client";
 
 import GMap from "@/components/GMap";
-import Map from "@/components/Map";
+// import Map from "@/components/Map";
 import { Button, Card, CardContent, InputAdornment, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
