@@ -1,7 +1,7 @@
 "use server"
 import mongoose from "mongoose";
 
-const farmerSchema = new mongoose.Schema({
+const distributerSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please enter farmer name"],
@@ -25,6 +25,6 @@ const farmerSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-const Farmer = mongoose.models.farmers || mongoose.model('farmer', farmerSchema);
+const Distributer = mongoose.models.distributers || mongoose.model('distributer', distributerSchema);
 
-export default Farmer;
+export default Distributer;
