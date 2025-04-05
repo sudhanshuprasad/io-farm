@@ -1,5 +1,7 @@
 "use client";
 
+import GMap from "@/components/GMap";
+import Map from "@/components/Map";
 import { Button, Card, CardContent, InputAdornment, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -175,6 +177,9 @@ export default function Collector() {
           <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Submit</Button>
         </CardContent>
       </Card>
+
+      {/* <Map latitude={23.342} longitude={67.234} /> */}
+      <GMap />
 
     </div>
   );
