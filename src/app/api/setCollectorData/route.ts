@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/dbConfig/mongoConfig";
 import Collector from "@/schema/collectorSchema";
+import Farmer from "@/schema/farmerSchema";
+import Vender from "@/schema/venderSchema";
 
 dbConnect();
 
@@ -77,3 +79,42 @@ export async function POST(req: NextRequest) {
 //         headers: { 'Content-Type': 'application/json' }
 //     });
 // }
+
+export async function GET(request: NextRequest) {
+
+    // e.g. Insert new user into your DB
+    const allFarmer = await Farmer.find({});
+    const allVender = await Vender.find({});
+    // console.log(allFarmer);
+    let { potato_inquiry, onion_inquiry, tomato_inquiry, potato, onion, tomato } = {
+        potato_inquiry: 0,
+        onion_inquiry: 0,
+        tomato_inquiry: 0,
+        potato: 0,
+        onion: 0,
+        tomato: 0
+    };
+    allFarmer.forEach((farmer) => {
+        potato += parseInt(farmer?.yield?.potato);
+        onion += parseInt(farmer?.yield?.onion);
+        tomato += parseInt(farmer?.yield?.tomato);
+    });
+    allVender.forEach((vender) => {
+        potato_inquiry += parseInt(vender?.potato);
+        onion_inquiry += parseInt(vender?.onion);
+        tomato_inquiry += parseInt(vender?.tomato);
+    });
+    const result = {
+        potato_inquiry: potato_inquiry,
+        onion_inquiry: onion_inquiry,
+        tomato_inquiry: tomato_inquiry,
+        potato: potato,
+        onion: onion,
+        tomato: tomato
+    }
+    // console.log(result);
+    // allFarmer.forEach((farmer) => {
+    //     console.log(farmer?.name, farmer?.yield);
+    // });
+    return Response.json(result, { status: 201, });
+}

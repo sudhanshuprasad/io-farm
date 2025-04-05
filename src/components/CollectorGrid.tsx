@@ -27,12 +27,12 @@ export default function CollectorGrid() {
                 <Grid size={{ sm: 6, md: 4 }}>
                     <CollectorCard />
                 </Grid>
-                <Grid size={{ sm: 6, md: 4 }}>
+                {/* <Grid size={{ sm: 6, md: 4 }}>
                     <CollectorCard />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
                     <CollectorCard />
-                </Grid>
+                </Grid> */}
             </Grid>
         </Box>
     );

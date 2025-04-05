@@ -34,22 +34,17 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     console.log("Request body: ", body);
     // find user in the database
-    const farmerFound = await Vender.findOne({name: body?.name});
-    // console.log(farmerFound);
+    const venderFound = await Vender.findOne({ name: body?.name });
+    // console.log(venderFound);
     //if user is not found then save the user
     const data = {
         name: body?.name,
-        temperature: '31',
-        humidity: '50',
-        moisture: '80',
-        yield: {
-            potato: body?.potato,
-            onion: body?.onion,
-            tomato: body?.tomato
-        }
+        potato: body?.potato,
+        onion: body?.onion,
+        tomato: body?.tomato
     }
 
-    if (!farmerFound) {
+    if (!venderFound) {
 
         try {
             const savedVender = await Vender.create(data);
@@ -61,7 +56,7 @@ export async function POST(req: NextRequest) {
 
     }
 
-    const farmer = await Vender.findByIdAndUpdate(farmerFound?._id, data, { new: true });
+    const farmer = await Vender.findByIdAndUpdate(venderFound?._id, data, { new: true });
     // console.log('farmer: ', farmer);
 
     // saving the job details

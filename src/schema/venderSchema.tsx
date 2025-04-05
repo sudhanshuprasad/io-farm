@@ -7,17 +7,14 @@ const venderSchema = new mongoose.Schema({
         required: [true, "Please enter vender name"],
         unique: true,
     },
-    temperature: {
+    potato: {
         type: String,
     },
-    humidity: {
+    onion: {
         type: String,
     },
-    moisture: {
+    tomato: {
         type: String,
-    },
-    yield: {
-        type: JSON,
     },
 
 }, { timestamps: true })

@@ -57,6 +57,7 @@ export async function GET(request: NextRequest) {
         temperature: params?.temp[0],
         humidity: params?.humidity[0],
         moisture: params?.moisture[0],
+        pump: params?.pump[0],
         // yield: {
         //     potato: params?.potato,
         //     onion: params?.onion,

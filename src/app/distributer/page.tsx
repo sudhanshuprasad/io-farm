@@ -1,10 +1,131 @@
-import CollectorGrid from "@/components/CollectorGrid";
-import VenderGrid from "@/components/VenderGrid";
+"use client";
+
+import { Button, Card, CardContent, InputAdornment, TextField, Typography } from "@mui/material";
+import axios from "axios";
+import { useState } from "react";
 
 export default function Collector() {
+
+  const [farmerData, setFarmerData] = useState({
+    potato_inquiry: 'loading...',
+    potato_stock: 'loading...',
+    onion_inquiry: 'loading...',
+    onion_stock: 'loading...',
+    tomato_inquiry: 'loading...',
+    tomato_stock: 'loading...',
+  });
+
+  const handleSubmit = () => {
+    // Handle form submission logic here
+    console.log('Form submitted!');
+    console.log(farmerData);
+    axios.post('/api/setFarmerData', {
+      name: 'Collector 1',
+      potato: '100Kg',
+      onion: '50Kg',
+      tomato: '70Kg',
+
+    })
+  };
+
   return (
-    <div className="m-5">
-      <CollectorGrid/>
+    <div>
+      <Card className="bg-blue-500 text-white p-4">
+        <CardContent className="flex flex-col space-y-2">
+          <div className="full-width flex items-center justify-between mb-4">
+            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Distributer 1</Typography>
+          </div>
+
+          <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
+            <li className='flex flex-row gap-2 justify-around text-center'>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} >Stock:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Inquiry:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Stock:</Typography>
+            </li>
+            <li className='flex flex-row gap-2 justify-around'>
+              <Typography sx={{ width: '8rem' }}>Potato:</Typography>
+              <TextField variant="outlined" size='small' placeholder="0Kg" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, potato_inquiry: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+              <TextField variant="outlined" size='small' placeholder="0Kg" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, potato_stock: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+            </li>
+
+            <li className='flex flex-row gap-2 justify-around'>
+              <Typography sx={{ width: '8rem' }}>Onion:</Typography>
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, onion_inquiry: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, onion_stock: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+            </li>
+
+            <li className='flex flex-row gap-2 justify-around'>
+              <Typography sx={{ width: '8rem' }}>Tomato:</Typography>
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, tomato_inquiry: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={"0"}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                  setFarmerData({ ...farmerData, tomato_stock: e.target.value })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
+            </li>
+
+          </ul>
+
+          <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Submit</Button>
+        </CardContent>
+      </Card>
+
     </div>
   );
 }

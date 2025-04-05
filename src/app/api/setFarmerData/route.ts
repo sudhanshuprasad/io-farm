@@ -42,6 +42,7 @@ export async function POST(req: NextRequest) {
         temperature: '',
         humidity: '',
         moisture: '',
+        pump: '',
         yield: {
             potato: body?.potato,
             onion: body?.onion,
@@ -61,7 +62,7 @@ export async function POST(req: NextRequest) {
 
     }
 
-    const farmer = await Farmer.findByIdAndUpdate(farmerFound?._id, data, { new: true });
+    const farmer = await Farmer.findByIdAndUpdate(farmerFound?._id, { yield: data.yield }, { new: true });
     // console.log('farmer: ', farmer);
 
     // saving the job details

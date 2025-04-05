@@ -16,6 +16,9 @@ const farmerSchema = new mongoose.Schema({
     moisture: {
         type: String,
     },
+    pump: {
+        type: String,
+    },
     yield: {
         type: JSON,
     },

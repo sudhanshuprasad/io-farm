@@ -8,6 +8,7 @@ export default function FarmerSection({name}: { name?: string }) {
     temperature: 'loading...',
     humidity: 'loading...',
     moisture: 'loading...',
+    pump: 'off',
     // yield: { potato: '12', onion: '54', tomato: '24' }
   });
 
@@ -19,7 +20,8 @@ export default function FarmerSection({name}: { name?: string }) {
       setFarmerData({
         temperature: response?.data?.temperature,
         humidity: response?.data?.humidity,
-        moisture: response?.data?.moisture
+        moisture: response?.data?.moisture,
+        pump: response?.data?.pump,
       });
     } catch (error) {
       console.error('Error fetching data:', error);
