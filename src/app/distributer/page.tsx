@@ -18,12 +18,23 @@ export default function Collector() {
   });
 
   const [allStock, setAllStock] = useState({ potato: 0, onion: 0, tomato: 0, potato_inquiry: 0, onion_inquiry: 0, tomato_inquiry: 0 });
+  const [distributer, setDistributer] = useState({ lat: "", lon: "" });
 
   const getAllStocks = async () => {
     try {
       const response: any = await axios.get(`/api/setCollectorData`);
-      console.log(response?.data);
+      // console.log(response?.data);
       setAllStock(response?.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const getDistributer = async () => {
+    try {
+      const response: any = await axios.get(`/api/getDistributer`);
+      // console.log(response?.data[0]);
+      setDistributer(response?.data[0]);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -31,12 +42,13 @@ export default function Collector() {
 
   useEffect(() => {
     getAllStocks();
+    getDistributer();
   }, []);
 
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log('Form submitted!');
-    console.log(farmerData);
+    // console.log(farmerData);
     axios.post('/api/setFarmerData', {
       name: 'Collector 1',
       potato: '100Kg',
@@ -179,8 +191,7 @@ export default function Collector() {
       </Card>
 
       {/* <Map latitude={23.342} longitude={67.234} /> */}
-      <GMap />
-
+      {(distributer.lat!=="" && distributer.lon!=="") ?<GMap lat={parseFloat(distributer.lat)} lon={parseFloat(distributer.lon)} />: <div>Loading... </div>}
     </div>
   );
 }

@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
     // const data = searchParams.getAll('');  
     console.log(params);
     const data = {
-        name: 'distributer1',
+        name: 'distributer',
         lat: params?.lat[0],
         lon: params?.lon[0],
     }

@@ -7,21 +7,22 @@ const containerStyle = {
     margin: "0 auto",
 };
 
-const center = {
-    lat: 20.2899, // Latitude
-    lng: 85.862, // Longitude
-};
+// const center = {
+//     lat: 20.2899, // Latitude
+//     lng: 85.862, // Longitude
+// };
 
-export default function GMap() {
+export default function GMap({lat, lon}: {lat: number, lon: number}) {
+    console.log(lat, lon);
     return (
         <LoadScript googleMapsApiKey={process.env.GOOGLE_API_KEY || ""}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={center}
+                center={{lat, lng: lon}}
                 zoom={15}
             >
                 {/* Add a marker */}
-                <Marker position={center} />
+                <Marker position={{lat, lng: lon}} />
             </GoogleMap>
         </LoadScript>
     );
