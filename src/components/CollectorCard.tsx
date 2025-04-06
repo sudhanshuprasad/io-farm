@@ -86,9 +86,6 @@ export default function CollectorCard() {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
-                InputProps={{
-                  readOnly: true,
-                }}
               />
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion_inquiry}
                 slotProps={{

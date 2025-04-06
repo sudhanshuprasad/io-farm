@@ -63,7 +63,7 @@ export default function FarmerSection({ name }: { name?: string }) {
           {/* <Typography>Temperature</Typography>
           <Typography>Humidity</Typography>
           <Typography>Moisture</Typography> */}
-          <Typography>Pump status: on</Typography>
+          <Typography>Pump status: {farmerData.pump}</Typography>
           <Typography>Graph</Typography>
           <Graph />
           <Typography className="mt-4">Yield:</Typography>

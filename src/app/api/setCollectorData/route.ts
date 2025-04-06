@@ -86,10 +86,13 @@ export async function GET(request: NextRequest) {
     const allFarmer = await Farmer.find({});
     const allVender = await Vender.find({});
     // console.log(allFarmer);
-    let { potato_inquiry, onion_inquiry, tomato_inquiry, potato, onion, tomato } = {
+    let { potato_inquiry, onion_inquiry, tomato_inquiry, potato_sell, onion_sell, tomato_sell, potato, onion, tomato } = {
         potato_inquiry: 0,
         onion_inquiry: 0,
         tomato_inquiry: 0,
+        potato_sell: 0,
+        onion_sell: 0,
+        tomato_sell: 0,
         potato: 0,
         onion: 0,
         tomato: 0
@@ -104,6 +107,7 @@ export async function GET(request: NextRequest) {
         onion_inquiry += parseInt(vender?.onion);
         tomato_inquiry += parseInt(vender?.tomato);
     });
+    
     const result = {
         potato_inquiry: potato_inquiry,
         onion_inquiry: onion_inquiry,

@@ -69,8 +69,8 @@ export default function Collector() {
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2 justify-around text-center'>
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} ></Typography>
-              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} >Stock:</Typography>
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Inquiry:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} >Stock:</Typography>
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Sell:</Typography>
             </li>
             <li className='flex flex-row gap-2 justify-around'>
