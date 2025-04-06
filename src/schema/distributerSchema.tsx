@@ -8,13 +8,13 @@ const distributerSchema = new mongoose.Schema({
         unique: true,
     },
     potato: {
-        type: String,
+        type: JSON,
     },
     onion: {
-        type: String,
+        type: JSON,
     },
     tomato: {
-        type: String,
+        type: JSON,
     },
     lat: {
         type: String,

@@ -17,8 +17,14 @@ export default function Collector() {
     tomato_stock: 'loading...',
   });
 
-  const [allStock, setAllStock] = useState({ potato: 0, onion: 0, tomato: 0, potato_inquiry: 0, onion_inquiry: 0, tomato_inquiry: 0 });
-  const [distributer, setDistributer] = useState({ lat: "", lon: "" });
+  // const [allStock, setAllStock] = useState({ potato: 0, onion: 0, tomato: 0, potato_inquiry: 0, onion_inquiry: 0, tomato_inquiry: 0 });
+  const [allStock, setAllStock] = useState<any>({});
+  const [distributer, setDistributer] = useState({
+    lat: "", lon: "",
+    potato: { inquiry: 0, stock: 0, sell: 0 },
+    onion: { inquiry: 0, stock: 0, sell: 0 },
+    tomato: { inquiry: 0, stock: 0, sell: 0 }
+  });
 
   const getAllStocks = async () => {
     try {
@@ -33,7 +39,7 @@ export default function Collector() {
   const getDistributer = async () => {
     try {
       const response: any = await axios.get(`/api/getDistributer`);
-      // console.log(response?.data[0]);
+      console.log(response?.data[0]);
       setDistributer(response?.data[0]);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -49,8 +55,7 @@ export default function Collector() {
     // Handle form submission logic here
     console.log('Form submitted!');
     // console.log(farmerData);
-    axios.post('/api/setFarmerData', {
-      name: 'Collector 1',
+    axios.post('/api/getDistributer', {
       potato: '100Kg',
       onion: '50Kg',
       tomato: '70Kg',
@@ -75,7 +80,7 @@ export default function Collector() {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Potato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="0Kg" defaultValue={allStock.potato_inquiry}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.potato?.inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, potato_inquiry: e.target.value })
@@ -86,7 +91,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0Kg" defaultValue={allStock.potato}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.potato.stock}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, potato_stock: e.target.value })
@@ -97,7 +102,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0Kg" defaultValue={allStock.potato}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer.potato.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, potato_stock: e.target.value })
@@ -112,7 +117,7 @@ export default function Collector() {
 
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Onion:</Typography>
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.onion_inquiry}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.onion?.inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, onion_inquiry: e.target.value })
@@ -123,7 +128,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.onion}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.onion?.stock}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, onion_stock: e.target.value })
@@ -134,7 +139,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.onion}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.onion?.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, onion_stock: e.target.value })
@@ -149,7 +154,7 @@ export default function Collector() {
 
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Tomato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.tomato_inquiry}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.tomato?.inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_inquiry: e.target.value })
@@ -160,7 +165,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.tomato}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.tomato?.stock}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_stock: e.target.value })
@@ -171,7 +176,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={allStock.tomato}
+              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.tomato?.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_stock: e.target.value })
@@ -191,7 +196,7 @@ export default function Collector() {
       </Card>
 
       {/* <Map latitude={23.342} longitude={67.234} /> */}
-      {(distributer.lat!=="" && distributer.lon!=="") ?<GMap lat={parseFloat(distributer.lat)} lon={parseFloat(distributer.lon)} />: <div>Loading... </div>}
+      {(distributer.lat !== "" && distributer.lon !== "") ? <GMap lat={parseFloat(distributer.lat)} lon={parseFloat(distributer.lon)} /> : <div>Loading... </div>}
     </div>
   );
 }

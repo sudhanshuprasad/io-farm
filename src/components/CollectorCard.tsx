@@ -45,6 +45,13 @@ export default function CollectorCard() {
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log('Form submitted!');
+    console.log(collector);
+    axios.post('/api/setCollectorData', {
+      name: 'collector1',
+      potato: collector.potato,
+      onion: collector.onion,
+      tomato: collector.tomato,
+    })
     // axios.post('/api/setFarmerData', {
     //   name: 'Collector 1',
     //   potato: '100Kg',
@@ -73,13 +80,26 @@ export default function CollectorCard() {
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Potato:</Typography>
               <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={collector.potato.stock}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, potato: { ...collector.potato, stock: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
+                    // readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
               />
               <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={collector.potato.inquiry}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, potato: { ...collector.potato, inquiry: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
@@ -88,8 +108,10 @@ export default function CollectorCard() {
               />
               <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={collector.potato.sell}
                 onChange={
-                  (e) => console.log(e.target.value)
-
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, potato: { ...collector.potato, sell: e.target.value } });
+                  }
                 }
                 slotProps={{
                   input: {
@@ -101,6 +123,12 @@ export default function CollectorCard() {
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Onion:</Typography>
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={collector.onion.stock}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, onion: { ...collector.onion, stock: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     // readOnly: true,
@@ -109,14 +137,26 @@ export default function CollectorCard() {
                 }}
               />
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={collector.onion.inquiry}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, onion: { ...collector.onion, inquiry: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
-                    readOnly: true,
+                    // readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
               />
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={collector.onion.sell}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, onion: { ...collector.onion, sell: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
@@ -127,18 +167,36 @@ export default function CollectorCard() {
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Tomato:</Typography>
               <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={collector.tomato.stock}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, tomato: { ...collector.tomato, stock: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }} />
               <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={collector.tomato.inquiry}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, tomato: { ...collector.tomato, inquiry: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }} />
               <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={collector.tomato.sell}
+                onChange={
+                  (e) => {
+                    console.log(e.target.value);
+                    setCollector({ ...collector, tomato: { ...collector.tomato, sell: e.target.value } });
+                  }
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,

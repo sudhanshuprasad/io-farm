@@ -5,9 +5,9 @@ export default function VenderSection({ name }: { name: string }) {
 
   const [venderData, setVenderData] = React.useState({
     name: 'vender1',
-    potato_inquiry: '80',
-    onion_inquiry: '50',
-    tomato_inquiry: '150',
+    potato_inquiry: '0',
+    onion_inquiry: '0',
+    tomato_inquiry: '0',
   });
 
     // const [farmerData, setFarmerData] = useState({
@@ -49,6 +49,14 @@ export default function VenderSection({ name }: { name: string }) {
       onion: venderData.onion_inquiry,
       tomato: venderData.tomato_inquiry,
     })
+
+    setVenderData({
+      name: venderData.name,
+      potato_inquiry: '0',
+      onion_inquiry: '0',
+      tomato_inquiry: '0',
+    });
+
   };
 
   return (
@@ -63,7 +71,7 @@ export default function VenderSection({ name }: { name: string }) {
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2 justify-around'>
               <Typography>Potato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={venderData.potato_inquiry}
+              <TextField variant="outlined" size='small' placeholder="80Kg" value={venderData.potato_inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setVenderData({ ...venderData, potato_inquiry: e.target.value })
@@ -76,7 +84,7 @@ export default function VenderSection({ name }: { name: string }) {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography>Onion:</Typography>
-              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={venderData.onion_inquiry}
+              <TextField variant="outlined" size='small' placeholder="50Kg" value={venderData.onion_inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setVenderData({ ...venderData, onion_inquiry: e.target.value })
@@ -89,7 +97,7 @@ export default function VenderSection({ name }: { name: string }) {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography>Tomato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={venderData.tomato_inquiry}
+              <TextField variant="outlined" size='small' placeholder="150Kg" value={venderData.tomato_inquiry}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setVenderData({ ...venderData, tomato_inquiry: e.target.value })

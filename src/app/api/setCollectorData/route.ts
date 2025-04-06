@@ -4,6 +4,7 @@ import dbConnect from "@/dbConfig/mongoConfig";
 import Collector from "@/schema/collectorSchema";
 import Farmer from "@/schema/farmerSchema";
 import Vender from "@/schema/venderSchema";
+import Distributer from "@/schema/distributerSchema";
 
 dbConnect();
 
@@ -34,7 +35,7 @@ dbConnect();
 export async function POST(req: NextRequest) {
 
     const body = await req.json();
-    // console.log("Request body: ", body);
+    console.log("Request body: ", body);
     // find user in the database
     const farmerFound = await Collector.findOne({ name: body?.name });
     // console.log(farmerFound);
@@ -45,6 +46,20 @@ export async function POST(req: NextRequest) {
         onion: body?.onion,
         tomato: body?.tomato
     }
+
+    const distributer = await Distributer.findOne({});
+    distributer.potato.stock = parseFloat(distributer.potato.stock) + parseFloat(body?.potato?.sell);
+    distributer.onion.stock = parseFloat(distributer.onion.stock) + parseFloat(body?.onion?.sell);
+    distributer.tomato.stock = parseFloat(distributer.tomato.stock) + parseFloat(body?.tomato?.sell);
+
+    const distributerUpdate = await Distributer.findOneAndUpdate({}, {
+        $set: {
+            potato: distributer.potato,
+            onion: distributer.onion,
+            tomato: distributer.tomato
+        }
+    }, { new: true });
+    console.log(distributerUpdate);
 
     if (!farmerFound) {
 
