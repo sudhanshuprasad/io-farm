@@ -23,13 +23,13 @@ export default function VenderGrid() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <VenderSection />
+                    <VenderSection name="vender1" />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <VenderSection />
+                    <VenderSection name="vender2" />
                 </Grid>
                 <Grid size={{ sm: 6, md: 4 }}>
-                    <VenderSection />
+                    <VenderSection name="vender3" />
                 </Grid>
             </Grid>
         </Box>

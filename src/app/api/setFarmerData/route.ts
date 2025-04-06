@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/dbConfig/mongoConfig";
 import Farmer from "@/schema/farmerSchema";
+import Collector from "@/schema/collectorSchema";
 
 dbConnect();
 
@@ -63,7 +64,19 @@ export async function POST(req: NextRequest) {
     }
 
     const farmer = await Farmer.findByIdAndUpdate(farmerFound?._id, { yield: data.yield }, { new: true });
-    // console.log('farmer: ', farmer);
+    const collector = await Collector.findOne({});
+
+    const collectorUpdate = await Collector.findByIdAndUpdate(
+        collector?._id,
+        {
+            $set: {
+                potato: { ...collector?.potato, stock: parseFloat(collector?.potato.stock) + parseFloat(data.yield.potato) },
+                onion: { ...collector?.onion, stock: parseFloat(collector?.onion.stock) + parseFloat(data.yield.onion) },
+                tomato: { ...collector?.tomato, stock: parseFloat(collector?.tomato.stock) + parseFloat(data.yield.tomato) },
+            }
+        },
+        { new: true });
+    console.log('collector: ', collectorUpdate);
 
     // saving the job details
 

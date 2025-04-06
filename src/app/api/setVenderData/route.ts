@@ -77,3 +77,14 @@ export async function POST(req: NextRequest) {
 //         headers: { 'Content-Type': 'application/json' }
 //     });
 // }
+
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
+
+    console.log(searchParams.get('name'));
+
+    // e.g. Insert new user into your DB
+    const farmer = await Vender.findOne({ name: searchParams.get('name') });
+
+    return Response.json(farmer, { status: 201, });
+}
