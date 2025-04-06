@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, CardContent, Button, Typography, Input, TextField } from '@mui/material';
+import { Card, CardContent, Button, Typography, Input, TextField, InputAdornment } from '@mui/material';
 import Graph from './Graph';
-export default function FarmerSection({name}: { name?: string }) {
+export default function FarmerSection({ name }: { name?: string }) {
 
   const [farmerData, setFarmerData] = useState({
     temperature: 'loading...',
     humidity: 'loading...',
     moisture: 'loading...',
     pump: 'off',
-    // yield: { potato: '12', onion: '54', tomato: '24' }
+    yield: { potato: '0', onion: '0', tomato: '0' }
   });
 
   // Fetch data from the server when the component mounts
@@ -22,6 +22,7 @@ export default function FarmerSection({name}: { name?: string }) {
         humidity: response?.data?.humidity,
         moisture: response?.data?.moisture,
         pump: response?.data?.pump,
+        yield: response?.data?.yield
       });
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -36,9 +37,10 @@ export default function FarmerSection({name}: { name?: string }) {
     // Handle form submission logic here
     console.log('Form submitted!');
     axios.post('/api/setFarmerData', {
-      potato: '100Kg',
-      onion: '50Kg',
-      tomato: '70Kg',
+      name: name,
+      potato: farmerData?.yield?.potato,
+      onion: farmerData?.yield?.onion,
+      tomato: farmerData?.yield?.tomato,
 
     })
   };
@@ -68,19 +70,46 @@ export default function FarmerSection({name}: { name?: string }) {
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2'>
               <Typography>Potato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={"100Kg"} />
+              <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={farmerData?.yield?.potato}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setFarmerData({ ...farmerData, yield: { ...farmerData.yield, potato: e.target.value } })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
             </li>
             <li className='flex flex-row gap-2'>
               <Typography>Onion:</Typography>
-              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={"50Kg"} />
+              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={farmerData?.yield?.onion}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setFarmerData({ ...farmerData, yield: { ...farmerData.yield, onion: e.target.value } })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
             </li>
             <li className='flex flex-row gap-2'>
               <Typography>Tomato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="70Kg" defaultValue={"70Kg"} />
+              <TextField variant="outlined" size='small' placeholder="70Kg" defaultValue={farmerData?.yield?.tomato}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  setFarmerData({ ...farmerData, yield: { ...farmerData.yield, tomato: e.target.value } })
+                }}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
             </li>
-            {/* <li>
-              <Typography>Onion - 50Kg, Tomato - 70Kg</Typography>
-            </li> */}
           </ul>
 
           <Button variant="contained" className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Submit</Button>

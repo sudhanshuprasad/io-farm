@@ -39,57 +39,72 @@ export default function CollectorCard() {
       <Card className="bg-blue-500 text-white p-4">
         <CardContent className="flex flex-col space-y-2">
           <div className="full-width flex items-center justify-between mb-4">
-            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Collector 1</Typography>
+            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Collector</Typography>
           </div>
 
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2 justify-around text-center'>
-              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} >Item:</Typography>
-              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Stock:</Typography>
-              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Inquiry:</Typography>
-              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Sell:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left', width: '8rem' }} >Item:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left', width: '8rem' }}>Stock:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left', width: '8rem' }}>Inquiry:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left', width: '8rem' }}>Sell:</Typography>
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Potato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={allStock.potato}
+              <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={allStock.potato}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
-                }} />
+                }}
+              />
               <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={allStock.potato_inquiry}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
-                }} />
+                }}
+              />
               <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={allStock.potato_inquiry}
+                onChange={
+                  (e) => console.log(e.target.value)
+
+                }
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
-                }} />
+                }}
+              />
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Onion:</Typography>
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion}
                 slotProps={{
                   input: {
+                    // readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
-                }} />
+                }}
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
+              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion_inquiry}
+                slotProps={{
+                  input: {
+                    readOnly: true,
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }}
+              />
               <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion_inquiry}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
-                }} />
-              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion_inquiry}
-                slotProps={{
-                  input: {
-                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
-                  },
-                }} />
+                }}
+              />
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Tomato:</Typography>

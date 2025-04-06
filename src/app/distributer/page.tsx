@@ -63,7 +63,7 @@ export default function Collector() {
       <Card className="bg-blue-500 text-white p-4">
         <CardContent className="flex flex-col space-y-2">
           <div className="full-width flex items-center justify-between mb-4">
-            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Distributer 1</Typography>
+            <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Distributer</Typography>
           </div>
 
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">

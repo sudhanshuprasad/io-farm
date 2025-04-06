@@ -28,9 +28,9 @@ export default function FarmerGrid() {
                 <Grid size={{ sm: 6, md: 4 }}>
                     <FarmerSection name="farmer2" />
                 </Grid>
-                <Grid size={{ sm: 6, md: 4 }}>
+                {/* <Grid size={{ sm: 6, md: 4 }}>
                     <FarmerSection name="farmer3" />
-                </Grid>
+                </Grid> */}
             </Grid>
         </Box>
     );
