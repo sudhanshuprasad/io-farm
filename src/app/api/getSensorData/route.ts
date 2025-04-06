@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
     // For example, fetch data from your DB here
 
     // const farmer = await Farmer.find({});
-    // console.log('farmer: ', farmer);
+    console.log('farmer: ', data);
     const farmer = await Farmer.findOneAndUpdate({ name: data?.name }, { $set: data }, { new: true });
     console.log('farmer: ', farmer);
 
