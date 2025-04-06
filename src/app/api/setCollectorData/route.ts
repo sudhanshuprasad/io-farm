@@ -107,11 +107,19 @@ export async function GET(request: NextRequest) {
         onion_inquiry += parseInt(vender?.onion);
         tomato_inquiry += parseInt(vender?.tomato);
     });
-    
+    allFarmer.forEach((farmer) => {
+        potato_sell += parseInt(farmer?.potato);
+        onion_sell += parseInt(farmer?.onion);
+        tomato_sell += parseInt(farmer?.tomato);
+    });
+
     const result = {
         potato_inquiry: potato_inquiry,
         onion_inquiry: onion_inquiry,
         tomato_inquiry: tomato_inquiry,
+        potato_sell: potato_sell,
+        onion_sell: onion_sell,
+        tomato_sell: tomato_sell,
         potato: potato,
         onion: onion,
         tomato: tomato
