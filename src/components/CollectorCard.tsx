@@ -47,10 +47,17 @@ export default function CollectorCard() {
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }} >Item:</Typography>
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Stock:</Typography>
               <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Inquiry:</Typography>
+              <Typography sx={{ marginBottom: '10px', justifyContent: 'left' }}>Sell:</Typography>
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Potato:</Typography>
               <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={allStock.potato}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }} />
+              <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={allStock.potato_inquiry}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
@@ -77,10 +84,22 @@ export default function CollectorCard() {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }} />
+              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={allStock.onion_inquiry}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }} />
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Tomato:</Typography>
               <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={allStock.tomato}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                  },
+                }} />
+              <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={allStock.tomato_inquiry}
                 slotProps={{
                   input: {
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
