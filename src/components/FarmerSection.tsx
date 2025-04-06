@@ -8,7 +8,7 @@ export default function FarmerSection({ name }: { name?: string }) {
     temperature: 'loading...',
     humidity: 'loading...',
     moisture: 'loading...',
-    pump: 'off',
+    pump: 'loading...',
     yield: { potato: '0', onion: '0', tomato: '0' }
   });
 
@@ -65,7 +65,7 @@ export default function FarmerSection({ name }: { name?: string }) {
           <Typography>Moisture</Typography> */}
           <Typography>Pump status: {farmerData.pump}</Typography>
           <Typography>Graph</Typography>
-          <Graph />
+          <Graph moisture={parseFloat(farmerData.moisture)}/>
           <Typography className="mt-4">Yield:</Typography>
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2'>
