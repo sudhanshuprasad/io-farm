@@ -55,12 +55,12 @@ export default function Collector() {
     // Handle form submission logic here
     console.log('Form submitted!');
     // console.log(farmerData);
-    axios.post('/api/getDistributer', {
-      potato: '100Kg',
-      onion: '50Kg',
-      tomato: '70Kg',
+    // axios.post('/api/getDistributer', {
+    //   potato: '100Kg',
+    //   onion: '50Kg',
+    //   tomato: '70Kg',
 
-    })
+    // })
   };
 
   return (
