@@ -54,13 +54,16 @@ export default function Collector() {
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log('Form submitted!');
-    // console.log(farmerData);
-    // axios.post('/api/getDistributer', {
-    //   potato: '100Kg',
-    //   onion: '50Kg',
-    //   tomato: '70Kg',
-
-    // })
+    console.log({
+      potato: {inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell},
+      onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
+      tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
+    });
+    axios.post('/api/getDistributer', {
+      potato: {inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell},
+      onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
+      tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
+    })
   };
 
   return (
@@ -91,7 +94,8 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.potato.stock}
+              <TextField variant="outlined" size='small' placeholder="0"
+                defaultValue={parseFloat(`${distributer?.potato.stock}`) - parseFloat(`${distributer?.potato.sell}`)}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, potato_stock: e.target.value })
@@ -128,7 +132,8 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.onion?.stock}
+              <TextField variant="outlined" size='small' placeholder="0"
+                defaultValue={parseFloat(`${distributer?.onion?.stock}`) - parseFloat(`${distributer?.onion?.sell}`)}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, onion_stock: e.target.value })
@@ -165,7 +170,8 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.tomato?.stock}
+              <TextField variant="outlined" size='small' placeholder="0"
+              defaultValue={parseFloat(`${distributer?.tomato?.stock}`)-parseFloat(`${distributer?.tomato?.sell}`)}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_stock: e.target.value })
