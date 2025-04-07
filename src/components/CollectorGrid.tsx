@@ -22,7 +22,7 @@ export default function CollectorGrid() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid size={{ sm: 12, md: 6 }}>
+                <Grid size={{ sm: 12, md: 12 }}>
                     <CollectorCard />
                 </Grid>
                 {/* <Grid size={{ sm: 6, md: 4 }}>

@@ -7,9 +7,9 @@ export default function CollectorCard() {
   // const [allStock, setAllStock] = useState({ potato: 0, onion: 0, tomato: 0, potato_inquiry: 0, onion_inquiry: 0, tomato_inquiry: 0 });
   // const [allInquiry, setAllInquiry] = React.useState({ potato: 0, onion: 0, tomato: 0 });
   const [collector, setCollector] = useState({
-    potato: { inquiry: "", sell: "", stock: "" },
-    tomato: { inquiry: "", sell: "", stock: "" },
-    onion: { inquiry: "", sell: "", stock: "" }
+    potato: { inquiry: "0", sell: "0", stock: "0" },
+    tomato: { inquiry: "0", sell: "0", stock: "0" },
+    onion: { inquiry: "0", sell: "0", stock: "0" }
   });
 
   // const getAllStocks = async () => {
