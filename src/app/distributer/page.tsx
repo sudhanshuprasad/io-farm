@@ -65,6 +65,13 @@ export default function Collector() {
       onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
       tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
     })
+
+    setDistributer({
+      ...distributer,
+      potato: { ...distributer.potato, sell: 0 },
+      tomato: { ...distributer.tomato, sell: 0 },
+      onion: { ...distributer.onion, sell: 0 }
+    });
   };
 
   return (
@@ -108,7 +115,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer.potato.sell}
+              <TextField variant="outlined" size='small' placeholder="0" value={distributer.potato.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, potato_stock: e.target.value })
@@ -146,7 +153,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.onion?.sell}
+              <TextField variant="outlined" size='small' placeholder="0" value={distributer?.onion?.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, onion_stock: e.target.value })
@@ -184,7 +191,7 @@ export default function Collector() {
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="0" defaultValue={distributer?.tomato?.sell}
+              <TextField variant="outlined" size='small' placeholder="0" value={distributer?.tomato?.sell}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_stock: e.target.value })
