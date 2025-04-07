@@ -42,9 +42,11 @@ export async function POST(req: NextRequest) {
     //if user is not found then save the user
     const data = {
         name: body?.name,
-        potato: body?.potato,
-        onion: body?.onion,
-        tomato: body?.tomato
+        potato: { ...body?.potato, stock: parseFloat(`${body?.potato?.stock}`) - parseFloat(`${body?.potato?.sell}`), sell: 0 },
+        onion: { ...body?.onion, stock: parseFloat(`${body?.onion?.stock}`) - parseFloat(`${body?.onion?.sell}`), sell: 0 },
+        tomato: { ...body?.tomato, stock: parseFloat(`${body?.tomato?.stock}`) - parseFloat(`${body?.tomato?.sell}`), sell: 0 },
+        // onion: body?.onion,
+        // tomato: body?.tomato
     }
 
     const distributer = await Distributer.findOne({});

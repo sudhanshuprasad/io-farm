@@ -199,7 +199,7 @@ export default function Collector() {
 
           </ul>
 
-          <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Submit</Button>
+          <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Sell</Button>
         </CardContent>
       </Card>
 

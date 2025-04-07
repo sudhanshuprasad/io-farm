@@ -52,12 +52,16 @@ export default function CollectorCard() {
       onion: collector.onion,
       tomato: collector.tomato,
     })
+    setCollector({
+      potato: { ...collector.potato, sell: '0' },
+      tomato: { ...collector.tomato, sell: '0' },
+      onion: { ...collector.onion, sell: '0' }
+    });
     // axios.post('/api/setFarmerData', {
     //   name: 'Collector 1',
     //   potato: '100Kg',
     //   onion: '50Kg',
     //   tomato: '70Kg',
-
     // })
   };
 
@@ -79,7 +83,7 @@ export default function CollectorCard() {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Potato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={collector.potato.stock}
+              <TextField variant="outlined" size='small' placeholder="100Kg" defaultValue={parseFloat(`${collector.potato.stock}`) - parseFloat(`${collector.potato.sell}`)}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -88,7 +92,7 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
-                    // readOnly: true,
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
@@ -102,11 +106,12 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="80Kg" defaultValue={collector.potato.sell}
+              <TextField variant="outlined" size='small' placeholder="80Kg" value={collector.potato.sell}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -122,7 +127,7 @@ export default function CollectorCard() {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Onion:</Typography>
-              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={collector.onion.stock}
+              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={parseFloat(`${collector.onion.stock}`) - parseFloat(`${collector.onion.sell}`)}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -131,7 +136,7 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
-                    // readOnly: true,
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
@@ -145,12 +150,12 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
-                    // readOnly: true,
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }}
               />
-              <TextField variant="outlined" size='small' placeholder="50Kg" defaultValue={collector.onion.sell}
+              <TextField variant="outlined" size='small' placeholder="50Kg" value={collector.onion.sell}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -166,7 +171,7 @@ export default function CollectorCard() {
             </li>
             <li className='flex flex-row gap-2 justify-around'>
               <Typography sx={{ width: '8rem' }}>Tomato:</Typography>
-              <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={collector.tomato.stock}
+              <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={parseFloat(`${collector.tomato.stock}`) - parseFloat(`${collector.tomato.sell}`)}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -175,6 +180,7 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }} />
@@ -187,10 +193,11 @@ export default function CollectorCard() {
                 }
                 slotProps={{
                   input: {
+                    readOnly: true,
                     endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
                   },
                 }} />
-              <TextField variant="outlined" size='small' placeholder="150Kg" defaultValue={collector.tomato.sell}
+              <TextField variant="outlined" size='small' placeholder="150Kg" value={collector.tomato.sell}
                 onChange={
                   (e) => {
                     console.log(e.target.value);
@@ -205,7 +212,7 @@ export default function CollectorCard() {
             </li>
           </ul>
 
-          <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Submit</Button>
+          <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Sell</Button>
         </CardContent>
       </Card>
 
