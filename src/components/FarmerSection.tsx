@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, CardContent, Button, Typography, Input, TextField, InputAdornment } from '@mui/material';
+import { Card, CardContent, Button, Typography, TextField, InputAdornment, Stack } from '@mui/material';
 import Graph from './Graph';
+import { Gauge } from '@mui/x-charts/Gauge';
 export default function FarmerSection({ name }: { name?: string }) {
 
   const [farmerData, setFarmerData] = useState({
-    temperature: 'loading...',
-    humidity: 'loading...',
-    moisture: 'loading...',
-    pump: 'loading...',
+    temperature: '0',
+    humidity: '0',
+    moisture: '0',
+    pump: '0',
     yield: { potato: '0', onion: '0', tomato: '0' }
   });
 
@@ -55,17 +56,33 @@ export default function FarmerSection({ name }: { name?: string }) {
           </div>
 
           <Typography>Agriculture land:</Typography>
-          <ul className="list-disc list-inside mb-2">
+          <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1, md: 3 }}>
+            <div>
+              <Gauge width={100} height={100} value={parseFloat(`${farmerData?.temperature}`)} />
+              <Typography>Temperature</Typography>
+            </div>
+            <div>
+              <Gauge width={100} height={100} value={parseFloat(`${farmerData?.humidity}`)} />
+              <Typography>Humidity</Typography>
+            </div>
+            <div>
+              <Gauge width={100} height={100} value={parseFloat(`${farmerData?.moisture}`)} />
+              <Typography>Moisture</Typography>
+            </div>
+            {/* <Gauge width={100} height={100} value={60} startAngle={-90} endAngle={90} /> */}
+          </Stack>
+          {/* <ul className="list-disc list-inside mb-2">
             <li>Temperature: {farmerData?.temperature}</li>
             <li>Humidity: {farmerData?.humidity}</li>
             <li>Moisture: {farmerData?.moisture}</li>
-          </ul>
+          </ul> */}
           {/* <Typography>Temperature</Typography>
           <Typography>Humidity</Typography>
           <Typography>Moisture</Typography> */}
+          <br />
           <Typography>Pump status: {farmerData.pump}</Typography>
-          <Typography>Graph</Typography>
-          <Graph moisture={parseFloat(farmerData.moisture)}/>
+          <br />
+          <Graph moisture={parseFloat(farmerData.moisture)} />
           <Typography className="mt-4">Yield:</Typography>
           <ul className="list-disc list-inside mb-2 ml-5 flex flex-col gap-2">
             <li className='flex flex-row gap-2'>

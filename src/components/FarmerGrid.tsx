@@ -22,10 +22,10 @@ export default function FarmerGrid() {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid size={{ sm: 6, md: 4 }}>
+                <Grid size={{ sm: 6, md: 6, lg: 4 }}>
                     <FarmerSection name="farmer1" />
                 </Grid>
-                <Grid size={{ sm: 6, md: 4 }}>
+                <Grid size={{ sm: 6, md: 6, lg: 4 }}>
                     <FarmerSection name="farmer2" />
                 </Grid>
                 {/* <Grid size={{ sm: 6, md: 4 }}>

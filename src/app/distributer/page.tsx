@@ -1,6 +1,7 @@
 "use client";
 
 import GMap from "@/components/GMap";
+import TopNavbar from "@/components/TopNavbar";
 // import Map from "@/components/Map";
 import { Button, Card, CardContent, InputAdornment, TextField, Typography } from "@mui/material";
 import axios from "axios";
@@ -54,13 +55,13 @@ export default function Collector() {
   const handleSubmit = () => {
     // Handle form submission logic here
     console.log('Form submitted!');
-    console.log({
-      potato: {inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell},
-      onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
-      tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
-    });
+    // console.log({
+    //   potato: {inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell},
+    //   onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
+    //   tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
+    // });
     axios.post('/api/getDistributer', {
-      potato: {inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell},
+      potato: { inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell },
       onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
       tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
     })
@@ -68,6 +69,7 @@ export default function Collector() {
 
   return (
     <div>
+      <TopNavbar />
       <Card className="bg-blue-500 text-white p-4">
         <CardContent className="flex flex-col space-y-2">
           <div className="full-width flex items-center justify-between mb-4">
@@ -171,7 +173,7 @@ export default function Collector() {
                 }}
               />
               <TextField variant="outlined" size='small' placeholder="0"
-              defaultValue={parseFloat(`${distributer?.tomato?.stock}`)-parseFloat(`${distributer?.tomato?.sell}`)}
+                defaultValue={parseFloat(`${distributer?.tomato?.stock}`) - parseFloat(`${distributer?.tomato?.sell}`)}
                 onChange={(e) => {
                   console.log(e.target.value)
                   setFarmerData({ ...farmerData, tomato_stock: e.target.value })
