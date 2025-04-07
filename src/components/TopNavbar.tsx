@@ -16,7 +16,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
 
 const pages = ['Farmer', 'Collector', 'Distributer', 'Vender'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [/* 'Profile', 'Account', 'Dashboard',  */'Logout'];
 
 function TopNavbar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -37,6 +37,7 @@ function TopNavbar() {
     };
 
     const handleCloseUserMenu = () => {
+        router.push('/')
         setAnchorElUser(null);
     };
 
