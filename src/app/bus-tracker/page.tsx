@@ -81,7 +81,7 @@ export default function Collector() {
   return (
     <div>
       <TopNavbar />
-      <Card className="bg-blue-500 text-white p-4">
+      {/* <Card className="bg-blue-500 text-white p-4">
         <CardContent className="flex flex-col space-y-2">
           <div className="full-width flex items-center justify-between mb-4">
             <Typography sx={{ textAlign: 'center', width: '100%', fontWeight: 'bold' }} variant="h6">Distributer</Typography>
@@ -212,7 +212,7 @@ export default function Collector() {
 
           <Button variant="contained" style={{ marginTop: '10px' }} className="bg-white text-blue-500 mt-2" onClick={handleSubmit}>Sell</Button>
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* <Map latitude={23.342} longitude={67.234} /> */}
       {(distributer.lat !== "" && distributer.lon !== "") ?

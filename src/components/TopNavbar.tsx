@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useRouter } from 'next/navigation';
 
-const pages = ['Farmer', 'Collector', 'Distributer', 'Vender'];
+const pages = ['Farmer', 'Collector', 'Distributer', 'Vender', 'Bus-Tracker'];
 const settings = [/* 'Profile', 'Account', 'Dashboard',  */'Logout'];
 
 function TopNavbar() {
