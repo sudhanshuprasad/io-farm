@@ -48,7 +48,7 @@ export default function GMap({ lat, lon }: { lat: number, lon: number }) {
                 zoom={15}
             >
                 {/* Add a marker */}
-                <Marker position={{ lat, lng: lon }} />
+                <Marker position={{ lat, lng: lon }} icon={"https://img.icons8.com/isometric/50/bus.png"} />
                 <Marker position={yourLocation} icon={"https://img.icons8.com/?size=25&id=w8DkIkRlcHuA&format=png&color=000000"} />
                 <Polyline
                     path={path}

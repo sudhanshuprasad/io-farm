@@ -50,7 +50,11 @@ export default function Collector() {
   useEffect(() => {
     getAllStocks();
     getDistributer();
+    setInterval(() => {
+      getDistributer();
+    }, 5000);
   }, []);
+
 
   const handleSubmit = () => {
     // Handle form submission logic here
@@ -211,7 +215,10 @@ export default function Collector() {
       </Card>
 
       {/* <Map latitude={23.342} longitude={67.234} /> */}
-      {(distributer.lat !== "" && distributer.lon !== "") ? <GMap lat={parseFloat(distributer.lat)} lon={parseFloat(distributer.lon)} /> : <div>Loading... </div>}
+      {(distributer.lat !== "" && distributer.lon !== "") ?
+      <GMap lat={parseFloat(distributer.lat)} lon={parseFloat(distributer.lon)} />
+      :
+      <div>Loading... </div>}
     </div>
   );
 }

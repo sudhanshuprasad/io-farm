@@ -65,7 +65,7 @@ const Login = () => {
         setTimeout(() => {
             setIsLoading(false);
             showToast("Login successful!", "Welcome to your IO Farm Device Hub");
-            router.push("/farmer");
+            router.push("/distributer");
         }, 1000);
     };
 
