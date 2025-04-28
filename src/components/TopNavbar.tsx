@@ -61,7 +61,7 @@ function TopNavbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        KIIT Bus Tracker
+                        KIT Bus Tracker
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -119,7 +119,7 @@ function TopNavbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        KIIT Bus Tracker
+                        KIT Bus Tracker
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
