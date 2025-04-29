@@ -50,7 +50,7 @@ const Login = () => {
 
         if (!validateForm()) return;
 
-        if(password !== "123456") {
+        if(password !== "Admin@kit1234") {
             setTimeout(() => {
                 setIsLoading(false);
                 showToast("Login failed", "Invalid email or password");
