@@ -40,7 +40,7 @@ export default function Collector() {
   const getDistributer = async () => {
     try {
       const response: any = await axios.get(`/api/getDistributer`);
-      console.log(response?.data[0]);
+      // console.log(response?.data[0]);
       setDistributer(response?.data[0]);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -48,7 +48,7 @@ export default function Collector() {
   };
 
   useEffect(() => {
-    getAllStocks();
+    // getAllStocks();
     getDistributer();
     setInterval(() => {
       getDistributer();
@@ -64,11 +64,11 @@ export default function Collector() {
     //   onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
     //   tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
     // });
-    axios.post('/api/getDistributer', {
-      potato: { inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell },
-      onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
-      tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
-    })
+    // axios.post('/api/getDistributer', {
+    //   potato: { inquiry: allStock.potato.inquiry, stock: allStock.potato.stock, sell: allStock.potato.sell },
+    //   onion: { inquiry: allStock.onion.inquiry, stock: allStock.onion.stock, sell: allStock.onion.sell },
+    //   tomato: { inquiry: allStock.tomato.inquiry, stock: allStock.tomato.stock, sell: allStock.tomato.sell }
+    // })
 
     setDistributer({
       ...distributer,

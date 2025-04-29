@@ -13,9 +13,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import { useRouter } from 'next/navigation';
 
-const pages = ['Farmer', 'Collector', 'Distributer', 'Vender', 'Bus-Tracker'];
+const pages = ['Bus-Tracker'];
 const settings = [/* 'Profile', 'Account', 'Dashboard',  */'Logout'];
 
 function TopNavbar() {
@@ -32,7 +33,7 @@ function TopNavbar() {
     };
 
     const handleCloseNavMenu = () => {
-        console.log("object")
+        // console.log("object")
         setAnchorElNav(null);
     };
 
@@ -45,12 +46,12 @@ function TopNavbar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <DirectionsBusIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href=""
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },

@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import { GoogleMap, LoadScript, Marker, Polyline } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { DirectionsRenderer, DirectionsService, GoogleMap, LoadScript, Marker, Polyline } from "@react-google-maps/api";
+import GDirection from "./GDirection";
 
 const containerStyle = {
     width: "100%",
     height: "400px",
+    // height: "100%",
     margin: "0 auto",
 };
 
@@ -14,7 +16,8 @@ const containerStyle = {
 
 export default function GMap({ lat, lon }: { lat: number, lon: number }) {
 
-    const [yourLocation, setYourLocation] = React.useState({ lat: 0, lng: 0 });
+    const [yourLocation, setYourLocation] = useState({ lat: 0, lng: 0 });
+    // const [directionsResponse, setDirectionsResponse] = useState<google.maps.DirectionsResult | null>(null);
 
     useEffect(() => {
         // Get the user's current location
@@ -31,7 +34,20 @@ export default function GMap({ lat, lon }: { lat: number, lon: number }) {
         } else {
             console.error("Geolocation is not supported by this browser.");
         }
+
+        // console.log(process.env.GOOGLE_API_KEY)
     }, []);
+
+
+    // const handleDirectionsCallback = (response: google.maps.DirectionsResult | null, status: google.maps.DirectionsStatus) => {
+    //     if (status === "OK" && response) {
+    //         setDirectionsResponse(response);
+    //         console.log(response)
+    //     } else {
+    //         console.error("Directions request failed due to " + status);
+    //     }
+    // };
+
 
     const path = [
         { lat, lng: lon },  // First point
@@ -58,7 +74,29 @@ export default function GMap({ lat, lon }: { lat: number, lon: number }) {
                         strokeWeight: 4,
                     }}
                 />
-            </GoogleMap>
+
+                {/* {yourLocation.lat !== 0 && (
+                    <DirectionsService
+                        options={{
+                            origin: yourLocation,
+                            destination: { lat, lng: lon },
+                            travelMode: google.maps.TravelMode.DRIVING,
+                        }}
+                        callback={handleDirectionsCallback}
+                    />
+                )}
+
+                {directionsResponse && (
+                    <DirectionsRenderer
+                        options={{
+                            directions: directionsResponse,
+                        }}
+                    />
+                )}*/}
+
+            </GoogleMap> 
+
+            <GDirection lat={lat} lon={lon} />
         </LoadScript>
     );
 }

@@ -33,7 +33,7 @@ dbConnect();
 export async function POST(req: NextRequest) {
 
     const body = await req.json();
-    console.log("Request body: ", body);
+    // console.log("Request body: ", body);
     // find user in the database
     const farmerFound = await Farmer.findOne({ name: body?.name });
     // console.log(farmerFound);
