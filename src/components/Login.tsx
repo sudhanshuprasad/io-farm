@@ -74,9 +74,9 @@ const Login = () => {
             <div className="w-full max-w-md">
                 <div className="bg-white shadow-lg rounded-lg border border-gray-200">
                     <div className="px-6 py-4 text-center">
-                        <h2 className="text-3xl font-bold">Welcome Back to KIIT Bus Tracker</h2>
+                        <h2 className="text-3xl font-bold">Welcome Back to KIT Bus Tracker</h2>
                         <p className="text-gray-500 text-sm mt-2">
-                            Sign in to access your KIIT Bus Tracker device dashboard
+                            Sign in to access your KIT Bus Tracker device dashboard
                         </p>
                     </div>
 
