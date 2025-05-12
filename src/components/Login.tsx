@@ -64,7 +64,7 @@ const Login = () => {
         // Simulate login - replace with actual authentication when connected to backend
         setTimeout(() => {
             setIsLoading(false);
-            showToast("Login successful!", "Welcome to your KIIT Bus Tracker");
+            showToast("Login successful!", "Welcome to your KIT Bus Tracker");
             router.push("/bus-tracker");
         }, 1000);
     };
